@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ahmad Irsyad Rosyadi — Software Developer</title>
+<meta name="description" content="Portofolio Ahmad Irsyad Rosyadi, fresh graduate Teknik Informatika yang berfokus pada keamanan sistem dan pengembangan full stack.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F0F1F4;
+    --panel: #FFFFFF;
+    --panel-2: #F5F6F9;
+    --ink: #14171F;
+    --mute: #5C6474;
+    --gold: #A8690E;
+    --gold-tint: rgba(168,105,14,0.08);
+    --blue: #245C80;
+    --border: rgba(20,23,31,0.11);
+    --radius: 4px;
+    --shadow: 0 1px 2px rgba(20,23,31,0.04), 0 14px 32px -20px rgba(20,23,31,0.22);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D0F15;
+      --panel: #161A22;
+      --panel-2: #1B202A;
+      --ink: #EDEFF3;
+      --mute: #8A93A6;
+      --gold: #E2A94C;
+      --gold-tint: rgba(226,169,76,0.10);
+      --blue: #6FB6DE;
+      --border: rgba(237,239,243,0.13);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 16px 40px -20px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D0F15;
+    --panel: #161A22;
+    --panel-2: #1B202A;
+    --ink: #EDEFF3;
+    --mute: #8A93A6;
+    --gold: #E2A94C;
+    --gold-tint: rgba(226,169,76,0.10);
+    --blue: #6FB6DE;
+    --border: rgba(237,239,243,0.13);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 16px 40px -20px rgba(0,0,0,0.55);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  .letterhead-bar { height: 5px; background: var(--gold); width: 100%; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  a { color: inherit; }
+  img, svg { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+  section { padding: 104px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.012em; }
+  p { margin: 0; }
+
+  /* ---- nav ---- */
+  .nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s ease, box-shadow .25s ease;
+  }
+  .nav.is-scrolled { border-color: var(--border); box-shadow: 0 8px 24px -20px rgba(0,0,0,0.4); }
+  .nav-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-mark-badge {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: var(--ink);
+    color: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; font-weight: 600;
+    flex: 0 0 auto;
+  }
+  .nav-brand span.name { font-weight: 600; font-size: 14.5px; white-space: nowrap; }
+  .nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; font-size: 14px; overflow-x: auto; }
+  .nav-links a { text-decoration: none; color: var(--mute); white-space: nowrap; transition: color .15s ease; }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ---- hero ---- */
+  .hero { padding-top: 76px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+  .eyebrow-role { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--blue); margin-bottom: 20px; display: block; font-weight: 500; }
+  .hero h1 { font-size: clamp(38px, 5.6vw, 60px); line-height: 1.04; }
+  .hero-lede { margin-top: 24px; max-width: 46ch; color: var(--mute); font-size: 17.5px; }
+  .hero-cta { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 24px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); box-shadow: var(--shadow); }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--border); color: var(--ink); }
+  .btn-ghost:hover { background: var(--panel-2); }
+  .btn-video { border-color: var(--border); background: var(--panel-2); color: var(--ink); font-size: 13.5px; padding: 10px 18px; margin-top: 20px; }
+  .btn-video:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-tint); }
+  .hero-visual svg { width: 100%; height: auto; }
+
+  .facts { margin-top: 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .fact { background: var(--panel); padding: 20px 22px; }
+  .fact-label { font-size: 12px; color: var(--mute); font-family: "JetBrains Mono", monospace; }
+  .fact-value { margin-top: 7px; font-size: 15.5px; font-weight: 600; }
+
+  /* ---- section head device ---- */
+  .section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+  .accent-bar { width: 4px; height: 30px; background: var(--gold); border-radius: 2px; flex: 0 0 auto; }
+  .section-head h2 { font-size: 29px; }
+
+  /* ---- about ---- */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; }
+  .about p { color: var(--mute); font-size: 16px; max-width: 60ch; }
+  .about p + p { margin-top: 15px; }
+  .about-links { margin-top: 30px; display: flex; flex-direction: column; gap: 11px; font-size: 14.5px; }
+  .about-links a { text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 3px; width: fit-content; transition: border-color .15s ease, color .15s ease; }
+  .about-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ---- specialisasi ---- */
+  .spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 40px; }
+  .spec-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 26px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .spec-card:hover { transform: translateY(-2px); }
+  .spec-tag { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--gold); display: inline-block; margin-bottom: 11px; font-weight: 500; }
+  .spec-card h3 { font-size: 17.5px; margin-bottom: 9px; font-weight: 600; }
+  .spec-card p { color: var(--mute); font-size: 14.5px; }
+
+  /* ---- projects ---- */
+  .project-case {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 44px;
+    margin-top: 40px;
+    box-shadow: var(--shadow);
+  }
+  .project-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+  .project-head h3 { font-size: 25px; }
+  .project-role { color: var(--mute); font-size: 14.5px; margin-top: 8px; max-width: 52ch; }
+  .project-badge { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--blue); border: 1px solid var(--border); padding: 6px 11px; border-radius: var(--radius); white-space: nowrap; font-weight: 500; }
+  .project-body { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+  .project-col h4 { font-size: 13.5px; color: var(--ink); font-weight: 600; margin-bottom: 11px; }
+  .project-col p, .project-col li { font-size: 14.5px; color: var(--mute); }
+  .project-col ul { margin: 0; padding-left: 18px; }
+  .project-col li + li { margin-top: 7px; }
+  .spec-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chip { font-family: "JetBrains Mono", monospace; font-size: 12px; padding: 6px 11px; background: var(--panel-2); border: 1px solid var(--border); border-radius: var(--radius); color: var(--ink); }
+  .project-result { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 14.5px; color: var(--mute); }
+  .project-result strong { color: var(--ink); }
+
+  .project-secondary {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 34px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    align-items: start;
+    box-shadow: var(--shadow);
+  }
+  .project-secondary h3 { font-size: 19.5px; font-weight: 600; }
+  .project-secondary .project-role { margin-bottom: 15px; }
+  .project-secondary p { color: var(--mute); font-size: 14.5px; }
+
+  /* ---- skills ---- */
+  .skills-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .skill-group { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; }
+  .skill-group h4 { font-size: 13px; font-family: "JetBrains Mono", monospace; color: var(--gold); margin-bottom: 14px; font-weight: 500; }
+  .skill-group ul { list-style: none; margin: 0; padding: 0; }
+  .skill-group li { font-size: 14.5px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .skill-group li:last-child { border-bottom: none; }
+
+  /* ---- org ---- */
+  .org-card {
+    margin-top: 34px;
+    display: flex;
+    gap: 26px;
+    align-items: flex-start;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 30px;
+    box-shadow: var(--shadow);
+  }
+  .org-mark { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--blue); padding-top: 4px; white-space: nowrap; font-weight: 500; }
+  .org-card h3 { font-size: 16.5px; margin-bottom: 7px; font-weight: 600; }
+  .org-card p { color: var(--mute); font-size: 14.5px; }
+  .org-card ul { margin: 14px 0 0; padding-left: 18px; }
+  .org-card li { font-size: 14.5px; color: var(--mute); }
+  .org-card li + li { margin-top: 6px; }
+  .org-card li strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- contact ---- */
+  .contact-panel {
+    margin-top: 34px;
+    background: var(--gold-tint);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .contact-panel h2 { font-size: 27px; max-width: 20ch; font-weight: 700; }
+  .contact-links { display: flex; flex-direction: column; gap: 13px; }
+  .contact-links a { text-decoration: none; font-size: 15px; display: flex; align-items: center; gap: 10px; transition: color .15s ease; }
+  .contact-links a:hover { color: var(--gold); }
+  .contact-links .mono { color: var(--mute); font-size: 12.5px; }
+
+  footer { padding: 36px 0 calc(36px + env(safe-area-inset-bottom, 0px)); text-align: center; color: var(--mute); font-size: 13px; }
+
+  @media (max-width: 780px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; max-width: 220px; margin: 0 auto; }
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .project-body { grid-template-columns: 1fr; }
+    .project-secondary { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-panel { grid-template-columns: 1fr; text-align: left; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 480px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-visual rect { animation: reveal .45s ease backwards; }
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: scale(0.5); transform-origin: center; }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+</head>
+<body>
+
+<div class="letterhead-bar" aria-hidden="true"></div>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#home">
+      <span class="nav-mark-badge mono">AI</span>
+      <span class="name">Ahmad Irsyad Rosyadi</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#spesialisasi">Spesialisasi</a></li>
+      <li><a href="#proyek">Proyek</a></li>
+      <li><a href="#keahlian">Keahlian</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow-role mono">Software Developer — Security-Focused Full Stack</span>
+        <h1>Ahmad Irsyad<br>Rosyadi</h1>
+        <p class="hero-lede">Fresh graduate Teknik Informatika yang membangun sistem dari fondasi ke permukaan — dari skema enkripsi dan tanda tangan digital, sampai antarmuka yang dipakai penggunanya sehari-hari.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="mailto:irsydrsydi@gmail.com">Hubungi Saya</a>
+          <a class="btn btn-ghost" href="https://github.com/gunnhildrs" target="_blank" rel="noopener">Lihat GitHub</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 210 210" xmlns="http://www.w3.org/2000/svg">
+          <g id="grid"></g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-label mono">Lokasi</div>
+          <div class="fact-value">Bogor, Jawa Barat</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label mono">Status</div>
+          <div class="fact-value">Fresh Graduate 2026</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label mono">IPK</div>
+          <div class="fact-value">3.75 / 4.00</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label mono">Fokus</div>
+          <div class="fact-value">Keamanan &amp; Full Stack</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="tentang">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-head"><span class="accent-bar"></span><h2>Suka membangun sesuatu sampai benar-benar teruji</h2></div>
+        <p>Ketertarikan saya pada keamanan sistem tumbuh saat menyusun tugas akhir: bagaimana satu QR code bisa menyimpan data rahasia, membuktikan keasliannya sendiri, sekaligus tetap terlihat seperti QR code biasa. Pertanyaan itu yang membawa saya membangun OurTicket dari nol sebagai lulusan Teknik Informatika, Universitas Indraprasta PGRI — bukan sekadar menerapkan rumus dari buku, tapi merancang sendiri tiap lapisan keamanannya.</p>
+        <p>Di luar riset keamanan, saya senang mengerjakan sesuatu sampai tuntas — dari rancangan antarmuka sampai struktur basis data. Sebagai fresh graduate, saya mencari tim tempat saya bisa terus belajar sambil membawa cara kerja yang saya bangun selama kuliah: memastikan sesuatu berfungsi bukan cuma sekali, tapi juga saat benar-benar diuji.</p>
+      </div>
+      <div class="about-links">
+        <a href="mailto:irsydrsydi@gmail.com">irsydrsydi@gmail.com</a>
+        <a href="https://github.com/gunnhildrs" target="_blank" rel="noopener">github.com/gunnhildrs</a>
+        <a href="https://gunnhildrs.github.io/Portofolio/" target="_blank" rel="noopener">Portofolio versi awal</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="specialisasi" id="spesialisasi">
+    <div class="wrap">
+      <div class="section-head"><span class="accent-bar"></span><h2>Empat lapisan keamanan yang saya kuasai</h2></div>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <span class="spec-tag mono">AES-256-GCM</span>
+          <h3>Enkripsi data</h3>
+          <p>Mengenkripsi payload sensitif dengan mode autentikasi terintegrasi, menjamin kerahasiaan sekaligus integritas data di dalam satu operasi.</p>
+        </div>
+        <div class="spec-card">
+          <span class="spec-tag mono">ECDSA · secp256r1</span>
+          <h3>Tanda tangan digital</h3>
+          <p>Menerapkan skema tanda tangan kurva eliptik (NIST P-256) sehingga setiap tiket punya bukti keaslian yang tidak bisa disangkal penerbitnya.</p>
+        </div>
+        <div class="spec-card">
+          <span class="spec-tag mono">LSB Steganografi</span>
+          <h3>Penyembunyian data</h3>
+          <p>Membangun sendiri proses pembuatan QR code dari algoritma dasar — bukan memakai pustaka QR generator siap pakai — lalu menyisipkan data terenkripsi ke bit-bit terakhir piksel: informasi tersembunyi di tempat yang terlihat.</p>
+        </div>
+        <div class="spec-card">
+          <span class="spec-tag mono">Nonce + HMAC-SHA256</span>
+          <h3>Anti-replay</h3>
+          <p>Menambahkan nonce dan timestamp pada setiap payload untuk mencegah tiket yang sama dipindai atau dipakai ulang secara curang.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="proyek">
+    <div class="wrap">
+      <div class="section-head"><span class="accent-bar"></span><h2>Yang sudah saya bangun</h2></div>
+
+      <div class="project-case">
+        <div class="project-head">
+          <div>
+            <h3>OurTicket</h3>
+            <p class="project-role">Tugas akhir. Dirancang dan dibangun sendiri dari nol menggunakan PHP, 2025–2026.</p>
+          </div>
+          <span class="project-badge mono">E-TICKETING SECURITY</span>
+        </div>
+
+        <div class="project-body">
+          <div class="project-col">
+            <h4>Masalah</h4>
+            <p>Tiket digital berbasis QR mudah diduplikasi atau dipalsukan bila kodenya hanya menyimpan data polos tanpa lapisan verifikasi.</p>
+            <h4 style="margin-top:22px;">Solusi</h4>
+            <p>Sistem e-ticketing di mana setiap QR code dibangun sendiri lalu membawa data terenkripsi, bertanda tangan digital, dan disembunyikan melalui steganografi — sehingga satu kode QR sekaligus rahasia, terverifikasi, dan tahan replay.</p>
+          </div>
+          <div class="project-col">
+            <h4>Arsitektur teknis</h4>
+            <ul>
+              <li>QR code dibangun sendiri dari algoritma dasar — bukan menggunakan pustaka QR generator siap pakai</li>
+              <li>QR Code versi 10, error correction level M</li>
+              <li>Steganografi LSB 2-bit di kanal RGB</li>
+              <li>Payload 120-byte: nonce, timestamp, HMAC-SHA256, tanda tangan ECDSA</li>
+              <li>Integrasi pembayaran QRIS via Midtrans</li>
+              <li>5 halaman laporan admin dengan ekspor CSV/PDF</li>
+              <li>Pipeline pembuatan e-tiket PDF otomatis</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="spec-chips">
+          <span class="chip">PHP</span>
+          <span class="chip">AES-256</span>
+          <span class="chip">ECDSA P-256</span>
+          <span class="chip">LSB Steganography</span>
+          <span class="chip">Midtrans QRIS</span>
+        </div>
+
+        <a class="btn btn-video" href="https://youtu.be/-yiVfo2qHEk?si=a1ds0WFKegNP-yh2" target="_blank" rel="noopener">▶ Tonton Penjelasan Proyek</a>
+
+        <div class="project-result">
+          Kualitas citra QR hasil penyisipan data diuji dengan PSNR, mencapai <strong>~47,46 dB</strong> — perubahan piksel tidak kasat mata namun tetap bisa dipindai secara normal.
+        </div>
+      </div>
+
+      <div class="project-secondary">
+        <div>
+          <h3>Tiara School — Aplikasi Administrasi</h3>
+          <p class="project-role">Pengembang tunggal, full stack. Dibangun dengan Java.</p>
+          <p>Aplikasi administrasi untuk SD Swasta Tiara School, dikembangkan dari perancangan basis data, logika bisnis, hingga antarmuka pengguna dalam satu siklus pengembangan penuh.</p>
+        </div>
+        <div>
+          <div class="spec-chips">
+            <span class="chip">Java</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Desktop App</span>
+          </div>
+          <p style="margin-top:18px;">Mengelola data siswa dan nilai, dibangun sebagai syarat kelulusan yang menuntut penguasaan siklus pengembangan penuh — dari desain sistem sampai rilis.</p>
+          <a class="btn btn-video" href="https://youtu.be/snCtvcUkfpo?si=xJoqIR74dkqGcnTs" target="_blank" rel="noopener">▶ Tonton Penjelasan Proyek</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="keahlian">
+    <div class="wrap">
+      <div class="section-head"><span class="accent-bar"></span><h2>Perangkat yang saya pakai</h2></div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>BAHASA &amp; FRAMEWORK</h4>
+          <ul>
+            <li>Java</li>
+            <li>PHP · Laravel</li>
+            <li>HTML, CSS, JavaScript</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>KEAMANAN &amp; KRIPTOGRAFI</h4>
+          <ul>
+            <li>AES-256 (CBC/GCM)</li>
+            <li>ECDSA (secp256r1)</li>
+            <li>Steganografi LSB</li>
+            <li>HMAC-SHA256</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>TOOLS &amp; INTEGRASI</h4>
+          <ul>
+            <li>MySQL</li>
+            <li>XAMPP / Laragon</li>
+            <li>Midtrans QRIS API</li>
+            <li>n8n (workflow automation)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="org" id="organisasi">
+    <div class="wrap">
+      <div class="section-head"><span class="accent-bar"></span><h2>Di luar layar</h2></div>
+      <div class="org-card">
+        <span class="org-mark mono">KARANG TARUNA RW</span>
+        <div>
+          <h3>Wakil Ketua Pelaksana, HUT RI</h3>
+          <p>Memimpin koordinasi panitia tingkat RW untuk penyelenggaraan peringatan HUT RI, dari perencanaan acara hingga pelaksanaan di lapangan.</p>
+          <ul>
+            <li><strong>17 Agustus</strong> — karnaval dan lomba</li>
+            <li><strong>28 Agustus</strong> — malam puncak/pentas seni, lomba qosidah marawis hadroh</li>
+            <li><strong>29 Agustus</strong> — konser musik hingga pentas seni</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontak">
+    <div class="wrap">
+      <div class="contact-panel">
+        <h2>Terbuka untuk peluang sebagai developer.</h2>
+        <div class="contact-links">
+          <a href="mailto:irsydrsydi@gmail.com">irsydrsydi@gmail.com</a>
+          <a href="https://github.com/gunnhildrs" target="_blank" rel="noopener">github.com/gunnhildrs</a>
+          <span class="mono">BOGOR, JAWA BARAT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Ahmad Irsyad Rosyadi.
+</footer>
+
+<script>
+  (function () {
+    // Sticky nav shadow on scroll
+    var nav = document.getElementById("siteNav");
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 8) nav.classList.add("is-scrolled");
+      else nav.classList.remove("is-scrolled");
+    }, { passive: true });
+  })();
+
+  (function () {
+    // Build a Version-1-style QR silhouette (21x21 modules) with real finder
+    // patterns and a timing row/column, plus a gold "hidden signature" diagonal.
+    var N = 21, cell = 10;
+    var ns = "http://www.w3.org/2000/svg";
+    var g = document.getElementById("grid");
+
+    function inFinder(r, c) {
+      var anchors = [[0,0],[0,14],[14,0]];
+      for (var i = 0; i < anchors.length; i++) {
+        var ar = anchors[i][0], ac = anchors[i][1];
+        if (r >= ar && r < ar + 7 && c >= ac && c < ac + 7) {
+          return { local: true, lr: r - ar, lc: c - ac };
+        }
+      }
+      return null;
+    }
+
+    function finderFilled(lr, lc) {
+      if (lr === 0 || lr === 6 || lc === 0 || lc === 6) return true;
+      if (lr === 1 || lr === 5 || lc === 1 || lc === 5) return false;
+      return true; // inner 3x3 eye
+    }
+
+    var delayStep = 0.0035;
+    var i = 0;
+
+    for (var r = 0; r < N; r++) {
+      for (var c = 0; c < N; c++) {
+        var fill = false;
+        var accent = false;
+
+        var f = inFinder(r, c);
+        if (f) {
+          fill = finderFilled(f.lr, f.lc);
+        } else if (r === 6 && c >= 8 && c <= 12) {
+          fill = (c % 2 === 0);
+        } else if (c === 6 && r >= 8 && r <= 12) {
+          fill = (r % 2 === 0);
+        } else {
+          fill = ((r * 31 + c * 17 + r * c) % 7) < 3;
+          var diag = (r - c + N) % N;
+          if (fill && diag >= 9 && diag <= 11) accent = true;
+        }
+
+        if (!fill) continue;
+
+        var rect = document.createElementNS(ns, "rect");
+        rect.setAttribute("x", c * cell + 0.6);
+        rect.setAttribute("y", r * cell + 0.6);
+        rect.setAttribute("width", cell - 1.2);
+        rect.setAttribute("height", cell - 1.2);
+        rect.setAttribute("rx", 1.3);
+        rect.setAttribute("fill", accent ? "var(--gold)" : "var(--ink)");
+        rect.style.opacity = accent ? "1" : (f ? "0.92" : "0.5");
+        rect.style.animationDelay = (i * delayStep) + "s";
+        g.appendChild(rect);
+        i++;
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
